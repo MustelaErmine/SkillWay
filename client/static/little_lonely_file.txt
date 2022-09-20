@@ -1,0 +1,5 @@
+Hi!
+I'm a static file.
+They used me at the beginning of development for check whether you can get access to me and my friends: scripts and styles.
+I've felt lonely since it.
+Thanks for your visit!)

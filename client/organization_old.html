@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Organization</title>
+    <script src="/static/scripts/organization_page.js" type="text/javascript"></script>
+</head>
+
+<body>
+    <style>
+        ul.competentions {
+            display: inline-block;
+        }
+    </style>
+    <script>
+        var teachers = { masters };
+        var raw = { competentionss_tree };
+        var groups = { groups };
+        var _tree = raw[0], names = raw[1];
+    </script>
+    <table>
+        <caption>
+            <h2>Teachers' table
+                <button onclick="updateTeacher();">Update</button>
+            </h2>
+        </caption>
+        <thead>
+            <tr>
+                <th>Display name</th>
+                <th>Username</th>
+                <th>Competention</th>
+                <th>Groups</th>
+            </tr>
+        </thead>
+        <tbody id='teachers-body'>
+        </tbody>
+        <tfoot>
+            <form name="new_teacher">
+                <td><input type="text" name="teacher_display_name"></td>
+                <td><input type="text" name="teacher_username"></td>
+                <td><select name="teacher_competention">
+                        <script>
+                            setTeacherFoot();
+                        </script>
+                    </select></td>
+            </form>
+            <td></td>
+            <td><button onclick="addTeacher(
+                new_teacher.teacher_display_name.value,
+                new_teacher.teacher_username.value,
+                new_teacher.teacher_competention.options[
+                    new_teacher.teacher_competention.selectedIndex
+                ].value
+            );">+</button></td>
+        </tfoot>
+    </table>
+    <h2 style="display: inline-block;">Competentions' tree</h2>
+    <button style="display: inline-block;" onclick="updateCompetitions();">Update</button>
+    <div id="competentions"></div>
+    <h2 style="display: inline-block;">Search</h2>
+    <form name="search" style="display: inline-block;">
+        <input type="text" style="display: inline-block;" name="row">
+    </form>
+    <button style="display: inline-block;" onclick="searchSkills(search.row.value);">
+        Find
+    </button>
+    <table>
+        </caption>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Organization</th>
+            </tr>
+        </thead>
+        <tbody id="search-table"></tbody>
+    </table>
+    <h2>Create a copy of</h2>
+    <form name="copieng" style="display: inline-block;">
+        <input type="text" style="display: inline-block;" name="id" placeholder="ID">
+    </form>
+    <button style="display: inline-block;" onclick="copyCompetition(copieng.id.value);">Copy</button>
+    <br>
+    <table style="display: inline-block;">
+        <caption>
+            <h2>Groups' table
+                <button onclick="updateGroups();">Update</button>
+            </h2>
+        </caption>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Teacher</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody id='groups-body'>
+        </tbody>
+        <tfoot>
+            <form name="new_group">
+                <td><input type="text" name="group_name"></td>
+                <td><select name="group_teacher">
+                    </select></td>
+            </form>
+            <td><button onclick="addGroup(
+            new_group.group_name.value, 
+            new_group.group_teacher.options[
+                new_group.group_teacher.selectedIndex
+            ].value);">Add group</button></td>
+
+        </tfoot>
+        <script>
+            //setGroups();
+            //setGroupsFoot();
+        </script>
+    </table>
+    <table style="display: inline-block;">
+        <caption>
+            <h2>Students' table</h2>
+        </caption>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>ID</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody id='students-body'>
+        </tbody>
+        <tfoot>
+            <form name="new_student">
+                <td><input type="text" name="student_name"></td>
+                <td><input type="text" name="student_id" placeholder="will be setted automatically"></td>
+            </form>
+            <td><button onclick="addStudent(
+            new_student.student_name.value,
+            new_student.student_id.value,
+            opened_group
+        );">Add student to opened group</button></td>
+        </tfoot>
+    </table>
+    <br>
+    <button style="display: inline-block;" onclick="setTeacherOfGroup(
+        set_new_teacher.group_name.value,
+        set_new_teacher.teacher.value
+    );">Set</button>
+    <form name="set_new_teacher" style="display: inline-block;">
+        <h3 style="display: inline-block;">teacher of group</h3>
+        <input type="text" name="group_name" placeholder="group's name">
+        <input type="text" name="teacher" placeholder="teacher's username">
+    </form>
+    <script>
+        setTeacher();
+        var competentions_div = document.getElementById('competentions');
+        writeTree(_tree, 0);
+        setGroups();
+        setGroupsFoot();
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+        ul.competentions {
+            display: inline-block;
+        }
+    </style>
+    <h3>Normalized: </h3>
+    <div id="competentions"></div>
+    <script>
+        var raw = {tree};
+        var _tree = raw[0], names = raw[1];
+        var competentions_div = document.getElementById('competentions');
+
+        function openCompetition(id) {
+            var com = findCompetition(id);
+            var tree = com[0], depth = com[1];
+            console.log(tree);
+            writeTree(tree, depth + 1);
+        }
+        function writeTree(tree, depth) {
+            var element = document.getElementById('depth_' + depth);
+            if (element == undefined) { // Append to inner of div
+                var new_inner = '<ul class="competentions" id="depth_' + depth + '">';
+                var keys = Object.keys(tree);
+                for (const key of keys) {
+                    new_inner += '<li onclick="openCompetition(\'' + key + '\');">';
+                    new_inner += names[key] + '</li>';
+                }
+                new_inner += '</ul>';
+                competentions_div.innerHTML += new_inner;
+            } else { // Write to element
+                var new_inner = '';
+                var keys = Object.keys(tree);
+                for (const key of keys) {
+                    new_inner += '<li onclick="openCompetition(\'' + key + '\');">';
+                    new_inner += names[key] + '</li>';
+                }
+                element.innerHTML = new_inner;
+            }
+        }
+        function findCompetition(id, tree=_tree, depth=0) {
+            var keys = Object.keys(tree);
+            var found = keys.find((el) => el==id, keys);
+            if (found != undefined) 
+                return [tree[id], depth];
+            var found = -1;
+            for (const key of keys) {
+                if (tree[key] != {}) {
+                    var tfound = findCompetition(id, tree[key], depth + 1);
+                    if (tfound[0] != -1) {
+                        found = tfound;
+                        break;
+                    }
+                }
+            }
+            return found;
+        }
+        writeTree(_tree, 0);
+    </script>
+    <ul>
+        <li style="list-style:none;">dsfsd</li>
+    </ul>
+</body>
+</html>
+<!--
+    <ul class="competentions" id="depth_0">
+        <li onclick="console.log('0_1');">Автомеханик</li>
+        <li onclick="console.log('0_2');">Авионер</li>
+        <li onclick="console.log('0_3');">Дэбил</li>
+    </ul>
+    <ul class="competentions" id="depth_1">
+        <li onclick="console.log('1_1');">OKdddddddddd</li>
+        <li onclick="console.log('1_2');">PK</li>
+        <li onclick="console.log('1_3');">NK</li>
+    </ul>
+-->

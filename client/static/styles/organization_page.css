@@ -1,0 +1,133 @@
+* {
+    margin: 0;
+    font-family: Roboto, sans-serif;
+}
+
+html {
+    background-color: #fde8cd;
+    scrollbar-width: thin;
+}
+
+.page {
+    padding: 5px;
+    color: #433520;
+    margin-bottom: 20px;
+    min-height: 500px;
+}
+
+#all {
+    float: right;
+    width: calc(100% - 200px);
+}
+
+nav {
+    float: left;
+    background-color: #025955;
+    height: calc(100% - 20px);
+    margin: 0;
+    width: 180px;
+    position: fixed;
+    color: white;
+    padding: 10px;
+    font-size: 18pt;
+    font-weight: bold;
+    padding-right: 0px;
+}
+
+nav>p {
+    padding-left: 20px;
+}
+
+hr {
+    color: #433520;
+    margin-right: 10px;
+}
+
+nav>ul {
+    margin-top: 100px;
+    padding-left: 20px;
+    padding-right: 0px;
+}
+
+nav>ul>li>a {
+    color: white;
+    text-decoration: none;
+    position: relative;
+    top: 20%;
+}
+
+nav>ul>li {
+    font-size: 14pt;
+    text-align: left;
+    list-style: none;
+    margin-top: 20px;
+    height: 50px;
+}
+
+nav>ul>li:hover {
+    border-right: 5px solid #00917c;
+}
+
+ul.competentions {
+    margin-top: 50px;
+    display: inline-block;
+    padding-left: 20px;
+    line-height: 25px;
+    vertical-align: top;
+}
+
+ul.competentions>li{
+    padding-left: 10px;
+}
+
+ul.competentions>li:hover{
+    cursor:pointer;
+}
+
+input {
+    border-radius: 2px;
+}
+
+li>button {
+    float: right;
+}
+
+div.block {
+    margin-bottom: 50px;
+    margin-right: 50px;
+    vertical-align: top;
+}
+
+th {
+    text-align: left;
+}
+
+caption {
+    text-align: left;
+    padding-bottom: 10px;
+    padding-left: 10px;
+}
+
+caption>button, caption>h2 {
+    display: inline-block;
+    vertical-align: center;
+}
+
+table {
+    margin-top: 20px;
+    border-spacing: 10px;
+    vertical-align: top;
+}
+
+h2 {
+    margin-bottom: 10px;
+    margin-right: 20px;
+}
+
+.focused {
+    background-color: #00917c;
+    background-clip: padding-box;
+    border-radius: 20px;
+    color: white;
+    list-style: none;
+}

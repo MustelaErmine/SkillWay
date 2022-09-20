@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skill Way</title>
+    <style>
+        html {
+            background-color: #fde8cd;
+        }
+
+        * {
+            font-family: Roboto, sans-serif;
+            color: #433520
+        }
+
+        h1 {
+            font-size: 48pt;
+        }
+
+        h2 {
+            font-size: 28pt;
+        }
+        input {
+            width: 20%;
+            height: 50px;
+            font-size: 24pt;
+            padding-left: 20px;
+        }
+        #submit {
+            color: white;
+            border-radius: 20px;
+            background-color: #00917c;
+            border: 5px solid #025955;
+        }
+        #submit:hover {
+            background-color: #00a78e;
+        }
+        #submit:active{
+            background-color: #00b99e;
+        }
+    </style>
+</head>
+
+<body>
+    <center>
+        <h1>Авторизация</h1>
+        <form method="POST" action="http://{adress}/login{query}">
+            <p><input type="text" name="username" /></p>
+            <p><input type="password" name="password" /></p>
+            <p><input type="submit" value="Войти" id="submit"/></p>
+        </form>
+        <h2>{status}</h2>
+    </center>
+</body>
+
+</html>
